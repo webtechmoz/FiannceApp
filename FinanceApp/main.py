@@ -1,13 +1,15 @@
 import flet as ft
-from page.Header import Header
+from page.Header import Header, user
 from page.Balance import Balance
 from page.Moviments import Moviments
+from page.Extract import Extract
+from page.Actions import Actions
 
 def main(page: ft.Page):
     page.bgcolor = ft.colors.with_opacity(0.90, 'white')
 
     #Definindo as variaveis
-    width: int = page.width
+    width: int = page.width - 20
     height: int = page.height
 
     appbar = ft.AppBar(
@@ -18,8 +20,16 @@ def main(page: ft.Page):
         content=ft.Stack(
             controls=[
                 Header(page, width, height),
-                Balance(page, width, height),
-                Moviments(page, width, height)
+                Balance(page, width, height, user['user']),
+                ft.Column(
+                    controls=[
+                        Moviments(page, width, height, user['user']),
+                        Actions(page, width, height, user['user']),
+                        Extract(page, width, height, user['user'])
+                    ],
+                    width=width,
+                    top=height*0.21
+                ),
             ],
             height=height,
             alignment=ft.alignment.center

@@ -1,13 +1,14 @@
 import flet as ft
+from utils.details import moviments
 
-def Moviments(page: ft.Page, width: int, height: int, moviments: list[float] = [2520.81, 1350.56]) -> ft.ResponsiveRow:
+def Moviments(page: ft.Page, width: int, height: int, user: str) -> ft.ResponsiveRow:
 
     control = ft.ResponsiveRow(
         controls=[
             ft.Container(
                 bgcolor=ft.colors.WHITE,
-                col={'xs': 10, 'sm': 10},
-                height= height * 0.15,
+                col={'xs': 12, 'sm': 12},
+                height= height * 0.14,
                 border_radius=8,
                 padding=ft.padding.only(
                     top=10,
@@ -38,7 +39,7 @@ def Moviments(page: ft.Page, width: int, height: int, moviments: list[float] = [
                                             weight='bold'
                                         ),
                                         ft.Text(
-                                            value=f'MT {format(moviments[0], ",.2f")}',
+                                            value=f'MT {format(moviments[user]['0'], ",.2f")}',
                                             size=20,
                                             color=ft.colors.with_opacity(0.9, 'green'),
                                             weight='bold'
@@ -56,13 +57,13 @@ def Moviments(page: ft.Page, width: int, height: int, moviments: list[float] = [
                                             weight='bold'
                                         ),
                                         ft.Text(
-                                            value=f'MT {format(moviments[1], ",.2f")}',
+                                            value=f'MT {format(moviments[user]['1'], ",.2f")}',
                                             size=20,
                                             color=ft.colors.with_opacity(0.9, 'red'),
                                             weight='bold'
                                         )
                                     ],
-                                    spacing=1
+                                    spacing=3
                                 )
                             ],
                             alignment=ft.MainAxisAlignment.SPACE_BETWEEN
@@ -73,7 +74,6 @@ def Moviments(page: ft.Page, width: int, height: int, moviments: list[float] = [
             )
         ],
         width=width,
-        top=height * 0.20,
         alignment=ft.MainAxisAlignment.CENTER
     )
 

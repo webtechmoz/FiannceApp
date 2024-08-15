@@ -1,12 +1,15 @@
 import flet as ft
+from utils.details import users
 
-def Header(page: ft.Page, width: int, height: int, name: str = 'Web Tech') -> ft.ResponsiveRow:
+user = users['1']
+
+def Header(page: ft.Page, width: int, height: int) -> ft.ResponsiveRow:
 
     control = ft.ResponsiveRow(
         controls=[
             ft.Container(
                 col={'xs': 12, 'sm': 12},
-                height=height * 0.25,
+                height=height * 0.20,
                 border_radius=4,
                 bgcolor=ft.colors.with_opacity(0.8, 'blue'),
                 padding=ft.padding.only(
@@ -25,7 +28,7 @@ def Header(page: ft.Page, width: int, height: int, name: str = 'Web Tech') -> ft
                                     color='white'
                                 ),
                                 ft.Text(
-                                    value=name,
+                                    value=user['name'],
                                     size=22,
                                     weight='bold',
                                     color='white'
@@ -52,7 +55,10 @@ def Header(page: ft.Page, width: int, height: int, name: str = 'Web Tech') -> ft
                     vertical_alignment=ft.CrossAxisAlignment.CENTER
                 )
             )
-        ]
+        ],
+        width=width,
+        top=0,
+        left=0
     )
 
     return control

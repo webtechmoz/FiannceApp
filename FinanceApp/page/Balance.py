@@ -1,6 +1,7 @@
 import flet as ft
+from utils.details import balance
 
-def Balance(page: ft.Page, width: int, height: int, balance: float = 1280.90) -> ft.ResponsiveRow:
+def Balance(page: ft.Page, width: int, height: int, user: str) -> ft.ResponsiveRow:
 
     control = ft.ResponsiveRow(
         controls=[
@@ -16,7 +17,7 @@ def Balance(page: ft.Page, width: int, height: int, balance: float = 1280.90) ->
                             weight='bold'
                         ),
                         ft.Text(
-                            value=f'MT {format(balance, ",.2f")}',
+                            value=f'MT {format(balance[user], ",.2f")}',
                             size=25,
                             color='white',
                             weight='bold'
@@ -27,7 +28,7 @@ def Balance(page: ft.Page, width: int, height: int, balance: float = 1280.90) ->
                 )
             )
         ],
-        top=height* 0.085,
+        top=height* 0.10,
         width=width,
         alignment=ft.MainAxisAlignment.CENTER
     )
