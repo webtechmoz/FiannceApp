@@ -4,6 +4,8 @@ from page.Balance import Balance
 from page.Moviments import Moviments
 from page.Extract import Extract
 from page.Actions import Actions
+from page.Favorities import Favorities
+from page.BottomBar import BottomBar
 
 def main(page: ft.Page):
     page.bgcolor = ft.colors.with_opacity(0.90, 'white')
@@ -25,11 +27,15 @@ def main(page: ft.Page):
                     controls=[
                         Moviments(page, width, height, user['user']),
                         Actions(page, width, height, user['user']),
+                        Favorities(page, width, height, user['user']),
                         Extract(page, width, height, user['user'])
                     ],
                     width=width,
-                    top=height*0.21
+                    height=height * 0.66,
+                    top=height*0.21,
+                    scroll=ft.ScrollMode.HIDDEN,
                 ),
+                BottomBar(page, width, height, user['user'])
             ],
             height=height,
             alignment=ft.alignment.center
